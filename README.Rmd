@@ -7,52 +7,35 @@ output: github_document
 ```{r setup, include = FALSE}
 knitr::opts_chunk$set(
   collapse = TRUE,
-  comment = "#>",
-  fig.path = "man/figures/README-",
-  out.width = "100%"
+  comment = "#>"
 )
 ```
-# nationalparkcolors
+# Custome pallettes
 
-The goal of nationalparkcolors is to provide an interface to the beautiful colors in National Park posters and images. The posters are a mix of the WPA originals and more modern remakes.
+Just some custom palettes
 
 ## Installation
 
-You can install the released version of nationalparkcolors from GitHub with:
+You can install this set of custom palettes from GitHub with:
 
 ```{r eval = FALSE}
 # install.packages("devtools")
-devtools::install_github("katiejolly/nationalparkcolors")
-```
-
-```{r echo = FALSE, out.width="200px"}
-knitr::include_graphics("https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQNS1Au8a9aLV9ZdvMo1F_s22jlx70AHWq3CqlLUNK4O4M2PG0c")
-knitr::include_graphics("https://zionpark.org/wp-content/uploads/2018/08/retrobryce.png")
-knitr::include_graphics("https://i.pinimg.com/736x/60/d4/c1/60d4c16a3102e33d7c73c9b6bc72c04b.jpg")
+devtools::install_github("fschleef/custom_pallettes")
 ```
 
 
 ## Example
 
-There are `r length(nationalparkcolors::park_palettes)` total palettes to choose from.
-
-```{r}
-library(nationalparkcolors)
-
-names(park_palettes)
-```
-
-
 You can create a palette in just one command (+ get an image of the palette).
 
 ```{r results = 'show'}
-pal <- park_palette("MtRainier")
+pal <- custom_palette("LeaLebanon")
 ```
 
 If you want a specific number of colors, you can also do that.
 
 ```{r}
-pal <- park_palette("MtRainier", 4)
+pal <- custom_palette("LeaLebanon", 5)
 ```
 
 ## Palettes
@@ -70,11 +53,6 @@ print.palette <- function(x, ...) {
   text((n + 1) / 2, 1, labels = attr(x, "name"), cex = 2, family = "Lato", col = "#32373D")
 }
 
-pals <- names(park_palettes)
-
-for (pal in pals){
-  print.palette(park_palette(pal))
-}
+print.palette(custom_palette(pal))
 ```
 
-Along with the nice color palettes, I also hope that people think more about the national park system when using this package. I am not affiliated with the Park Service, but if you'd like to support them you can [donate here](https://www.nps.gov/getinvolved/donate.htm).
